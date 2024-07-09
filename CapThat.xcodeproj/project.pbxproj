@@ -8,17 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		B20D86652C3D198D00811A20 /* CapThatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D86642C3D198D00811A20 /* CapThatApp.swift */; };
-		B20D86672C3D198D00811A20 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D86662C3D198D00811A20 /* ContentView.swift */; };
+		B20D86672C3D198D00811A20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D86662C3D198D00811A20 /* HomeView.swift */; };
 		B20D86692C3D198F00811A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20D86682C3D198F00811A20 /* Assets.xcassets */; };
 		B20D866C2C3D198F00811A20 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20D866B2C3D198F00811A20 /* Preview Assets.xcassets */; };
+		B20D86762C3D25C200811A20 /* sample_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B20D86752C3D25C200811A20 /* sample_video.mp4 */; };
+		B20D867A2C3D55E800811A20 /* SimpleVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D86792C3D55E800811A20 /* SimpleVideoPlayer.swift */; };
+		B20D867E2C3D584800811A20 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D867D2C3D584800811A20 /* HomeViewModel.swift */; };
+		B20D86812C3D5F8400811A20 /* PlayBackControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D86802C3D5F8400811A20 /* PlayBackControl.swift */; };
+		B20D86872C3D6A0600811A20 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D86862C3D6A0600811A20 /* BlurView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B20D86612C3D198D00811A20 /* CapThat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapThat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20D86642C3D198D00811A20 /* CapThatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapThatApp.swift; sourceTree = "<group>"; };
-		B20D86662C3D198D00811A20 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B20D86662C3D198D00811A20 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B20D86682C3D198F00811A20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B20D866B2C3D198F00811A20 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B20D86752C3D25C200811A20 /* sample_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_video.mp4; sourceTree = "<group>"; };
+		B20D86792C3D55E800811A20 /* SimpleVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleVideoPlayer.swift; sourceTree = "<group>"; };
+		B20D867D2C3D584800811A20 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		B20D86802C3D5F8400811A20 /* PlayBackControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBackControl.swift; sourceTree = "<group>"; };
+		B20D86862C3D6A0600811A20 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,7 @@
 			children = (
 				B20D86722C3D1E2C00811A20 /* presentation */,
 				B20D86682C3D198F00811A20 /* Assets.xcassets */,
+				B20D86772C3D260200811A20 /* assets */,
 				B20D866A2C3D198F00811A20 /* Preview Content */,
 			);
 			path = CapThat;
@@ -69,6 +80,7 @@
 		B20D86722C3D1E2C00811A20 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B20D86782C3D55C900811A20 /* ui kit */,
 				B20D86732C3D1E3C00811A20 /* ui */,
 				B20D86642C3D198D00811A20 /* CapThatApp.swift */,
 			);
@@ -86,9 +98,52 @@
 		B20D86742C3D1E5500811A20 /* screen */ = {
 			isa = PBXGroup;
 			children = (
-				B20D86662C3D198D00811A20 /* ContentView.swift */,
+				B20D867B2C3D580F00811A20 /* home */,
 			);
 			path = screen;
+			sourceTree = "<group>";
+		};
+		B20D86772C3D260200811A20 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				B20D86752C3D25C200811A20 /* sample_video.mp4 */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		B20D86782C3D55C900811A20 /* ui kit */ = {
+			isa = PBXGroup;
+			children = (
+				B20D86792C3D55E800811A20 /* SimpleVideoPlayer.swift */,
+				B20D86862C3D6A0600811A20 /* BlurView.swift */,
+			);
+			path = "ui kit";
+			sourceTree = "<group>";
+		};
+		B20D867B2C3D580F00811A20 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				B20D867F2C3D5F6F00811A20 /* component */,
+				B20D867C2C3D583900811A20 /* viewModel */,
+				B20D86662C3D198D00811A20 /* HomeView.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		B20D867C2C3D583900811A20 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B20D867D2C3D584800811A20 /* HomeViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		B20D867F2C3D5F6F00811A20 /* component */ = {
+			isa = PBXGroup;
+			children = (
+				B20D86802C3D5F8400811A20 /* PlayBackControl.swift */,
+			);
+			path = component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +206,7 @@
 			files = (
 				B20D866C2C3D198F00811A20 /* Preview Assets.xcassets in Resources */,
 				B20D86692C3D198F00811A20 /* Assets.xcassets in Resources */,
+				B20D86762C3D25C200811A20 /* sample_video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,8 +217,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B20D86672C3D198D00811A20 /* ContentView.swift in Sources */,
+				B20D86672C3D198D00811A20 /* HomeView.swift in Sources */,
 				B20D86652C3D198D00811A20 /* CapThatApp.swift in Sources */,
+				B20D867A2C3D55E800811A20 /* SimpleVideoPlayer.swift in Sources */,
+				B20D867E2C3D584800811A20 /* HomeViewModel.swift in Sources */,
+				B20D86812C3D5F8400811A20 /* PlayBackControl.swift in Sources */,
+				B20D86872C3D6A0600811A20 /* BlurView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +364,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,9 +372,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.firelord.CapThat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -333,6 +398,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -340,9 +406,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.firelord.CapThat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
