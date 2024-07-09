@@ -16,6 +16,9 @@
 		B20D867E2C3D584800811A20 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D867D2C3D584800811A20 /* HomeViewModel.swift */; };
 		B20D86812C3D5F8400811A20 /* PlayBackControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D86802C3D5F8400811A20 /* PlayBackControl.swift */; };
 		B20D86872C3D6A0600811A20 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D86862C3D6A0600811A20 /* BlurView.swift */; };
+		B20D868B2C3D743400811A20 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = B20D868A2C3D743400811A20 /* response.json */; };
+		B20D868E2C3D75B200811A20 /* SpeechModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D868D2C3D75B200811A20 /* SpeechModel.swift */; };
+		B20D86902C3D774600811A20 /* ResponseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D868F2C3D774600811A20 /* ResponseUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		B20D867D2C3D584800811A20 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B20D86802C3D5F8400811A20 /* PlayBackControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBackControl.swift; sourceTree = "<group>"; };
 		B20D86862C3D6A0600811A20 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		B20D868A2C3D743400811A20 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
+		B20D868D2C3D75B200811A20 /* SpeechModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechModel.swift; sourceTree = "<group>"; };
+		B20D868F2C3D774600811A20 /* ResponseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,7 @@
 		B20D86632C3D198D00811A20 /* CapThat */ = {
 			isa = PBXGroup;
 			children = (
+				B20D86882C3D73E100811A20 /* data */,
 				B20D86722C3D1E2C00811A20 /* presentation */,
 				B20D86682C3D198F00811A20 /* Assets.xcassets */,
 				B20D86772C3D260200811A20 /* assets */,
@@ -106,6 +113,7 @@
 		B20D86772C3D260200811A20 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				B20D868A2C3D743400811A20 /* response.json */,
 				B20D86752C3D25C200811A20 /* sample_video.mp4 */,
 			);
 			path = assets;
@@ -144,6 +152,31 @@
 				B20D86802C3D5F8400811A20 /* PlayBackControl.swift */,
 			);
 			path = component;
+			sourceTree = "<group>";
+		};
+		B20D86882C3D73E100811A20 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				B20D86892C3D742500811A20 /* model */,
+				B20D868C2C3D758F00811A20 /* util */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		B20D86892C3D742500811A20 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B20D868D2C3D75B200811A20 /* SpeechModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		B20D868C2C3D758F00811A20 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				B20D868F2C3D774600811A20 /* ResponseUtil.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B20D868B2C3D743400811A20 /* response.json in Resources */,
 				B20D866C2C3D198F00811A20 /* Preview Assets.xcassets in Resources */,
 				B20D86692C3D198F00811A20 /* Assets.xcassets in Resources */,
 				B20D86762C3D25C200811A20 /* sample_video.mp4 in Resources */,
@@ -217,7 +251,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B20D868E2C3D75B200811A20 /* SpeechModel.swift in Sources */,
 				B20D86672C3D198D00811A20 /* HomeView.swift in Sources */,
+				B20D86902C3D774600811A20 /* ResponseUtil.swift in Sources */,
 				B20D86652C3D198D00811A20 /* CapThatApp.swift in Sources */,
 				B20D867A2C3D55E800811A20 /* SimpleVideoPlayer.swift in Sources */,
 				B20D867E2C3D584800811A20 /* HomeViewModel.swift in Sources */,
