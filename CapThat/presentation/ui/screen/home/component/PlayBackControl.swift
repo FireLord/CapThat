@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayBackControl: View {
     @Binding var isPlaying: Bool
+    @Binding var isFinishedPlaying: Bool
     let onPlayClick: () -> Void
     
     var body: some View {
@@ -38,7 +39,7 @@ struct PlayBackControl: View {
                         .frame(width: 80)
                         .shadow(radius: 10)
                     
-                    Image(systemName: isPlaying ? "arrowtriangle.right.fill" : "pause.fill")
+                    Image(systemName: isFinishedPlaying ? "arrow.clockwise" : (isPlaying ? "arrowtriangle.right.fill" : "pause.fill"))
                         .scaleEffect(3)
                         .foregroundColor(.black)
                 }
@@ -63,5 +64,5 @@ struct PlayBackControl: View {
 }
 
 #Preview {
-    PlayBackControl(isPlaying: .constant(true), onPlayClick: {})
+    PlayBackControl(isPlaying: .constant(true), isFinishedPlaying: .constant(false), onPlayClick: {})
 }

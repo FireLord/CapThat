@@ -9,8 +9,8 @@ import SwiftUI
 import AVKit
 
 struct HomeView: View {
-    @StateObject var viewModel: HomeViewModel = HomeViewModel()
-    
+    @StateObject private var viewModel: HomeViewModel = HomeViewModel()
+
     var body: some View {
         GeometryReader { geometryReader in
             let size = geometryReader.size
@@ -39,14 +39,23 @@ struct HomeView: View {
                     }
                     .frame(height: size.height / 1.4)
                     
-                    PlayBackControl(isPlaying: $viewModel.isPlaying) {
+                    SeekBar(size: size, player: $viewModel.player, progress: $viewModel.progress, lastDraggedProgress: $viewModel.lastDraggedProgress, isSeeking: $viewModel.isSeeking)
+                        .padding()
+                    
+                    PlayBackControl(isPlaying: $viewModel.isPlaying, isFinishedPlaying: $viewModel.isFinishedPlaying) {
+                        if viewModel.isFinishedPlaying {
+                            viewModel.isFinishedPlaying = false
+                            viewModel.player?.seek(to: .zero)
+                            viewModel.progress = .zero
+                            viewModel.lastDraggedProgress = .zero
+                        }
+                        
                         if viewModel.isPlaying {
                             viewModel.player?.pause()
                         } else {
                             viewModel.player?.play()
                         }
                     }
-                    .padding(5)
                     
                     Text("The Intro Paragraph")
                         .font(.title2)

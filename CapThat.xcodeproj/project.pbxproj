@@ -20,6 +20,7 @@
 		B20D868E2C3D75B200811A20 /* SpeechModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D868D2C3D75B200811A20 /* SpeechModel.swift */; };
 		B20D86902C3D774600811A20 /* ResponseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D868F2C3D774600811A20 /* ResponseUtil.swift */; };
 		B28F49582C3E6D7F007EE807 /* UiUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F49572C3E6D7F007EE807 /* UiUtil.swift */; };
+		B28F495A2C3EC758007EE807 /* SeekBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F49592C3EC758007EE807 /* SeekBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		B20D868D2C3D75B200811A20 /* SpeechModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechModel.swift; sourceTree = "<group>"; };
 		B20D868F2C3D774600811A20 /* ResponseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUtil.swift; sourceTree = "<group>"; };
 		B28F49572C3E6D7F007EE807 /* UiUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiUtil.swift; sourceTree = "<group>"; };
+		B28F49592C3EC758007EE807 /* SeekBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				B20D86802C3D5F8400811A20 /* PlayBackControl.swift */,
+				B28F49592C3EC758007EE807 /* SeekBar.swift */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				B20D86652C3D198D00811A20 /* CapThatApp.swift in Sources */,
 				B20D867A2C3D55E800811A20 /* SimpleVideoPlayer.swift in Sources */,
 				B20D867E2C3D584800811A20 /* HomeViewModel.swift in Sources */,
+				B28F495A2C3EC758007EE807 /* SeekBar.swift in Sources */,
 				B20D86812C3D5F8400811A20 /* PlayBackControl.swift in Sources */,
 				B20D86872C3D6A0600811A20 /* BlurView.swift in Sources */,
 			);

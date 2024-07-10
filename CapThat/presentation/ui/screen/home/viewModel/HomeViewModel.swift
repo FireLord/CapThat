@@ -10,12 +10,21 @@ import AVKit
 
 @MainActor
 class HomeViewModel: ObservableObject {
+    // MARK: - Common
     @Published var isPlaying: Bool = false
     @Published var player: AVPlayer?
+    @Published var isFinishedPlaying: Bool = false
+    @Published var completeParagraph: String = ""
+
+    // MARK: - Caption
     @Published var sentenceDict: [Double:String] = [:]
     @Published var currentSentence: String = ""
-    @Published var completeParagraph: String = ""
     @Published var isCaptionEnabled: Bool = true
+    
+    // MARK: - Seek bar
+    @Published var progress: CGFloat = 0
+    @Published var lastDraggedProgress: CGFloat = 0
+    @Published var isSeeking: Bool = false
     
     init() {
         if let videoURL = Bundle.main.url(forResource: "sample_video", withExtension: "mp4") {
@@ -52,7 +61,25 @@ class HomeViewModel: ObservableObject {
                     guard let player = self.player, player.currentItem?.status == .readyToPlay else {
                         return
                     }
+                    
                     self.updateCurrentSentence()
+                    
+                    if let currentPlayerItem = player.currentItem {
+                        let totalDuration = currentPlayerItem.duration.seconds
+                        let currentDuration = player.currentTime().seconds
+                        
+                        let calculatedProgress = currentDuration / totalDuration
+                        
+                        if !self.isSeeking {
+                            self.progress = calculatedProgress
+                            self.lastDraggedProgress = self.progress
+                        }
+                        
+                        if calculatedProgress == 1 {
+                            self.isFinishedPlaying = true
+                            self.isPlaying = false
+                        }
+                    }
                 }
             }
         }
