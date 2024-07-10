@@ -13,20 +13,17 @@ struct HomeView: View {
 
             if horizontalSizeClass == .compact && verticalSizeClass == .regular {
                 // Portrait Mode
-                VStack {
-                    portraitView(size: size, safeArea: safeArea)
-                }
+                portraitView(size: size, safeArea: safeArea)
                 .ignoresSafeArea()
             } else {
                 // Landscape Mode
-                HStack {
-                    landscapeView(size: size, safeArea: safeArea)
-                }
+                landscapeView(size: size, safeArea: safeArea)
                 .ignoresSafeArea()
             }
         }
     }
-
+    
+    // MARK: - Portrait View
     @ViewBuilder
     private func portraitView(size: CGSize, safeArea: EdgeInsets) -> some View {
         ZStack {
@@ -45,14 +42,15 @@ struct HomeView: View {
                                 .font(.title3)
                                 .fontWeight(.regular)
                                 .foregroundColor(.white)
-                                .background(.black.opacity(0.5))
+                                .padding(10)
+                                .background(RoundedRectangle(cornerRadius: 10).fill(.black.opacity(0.5)))
                                 .padding()
                         }
                     }
                 }
                 .frame(height: size.height / 1.4)
                 
-                SeekBar(size: size, player: $viewModel.player, progress: $viewModel.progress, lastDraggedProgress: $viewModel.lastDraggedProgress, isSeeking: $viewModel.isSeeking)
+                SeekBar(player: $viewModel.player, progress: $viewModel.progress, lastDraggedProgress: $viewModel.lastDraggedProgress, isSeeking: $viewModel.isSeeking)
                     .padding()
                 
                 PlayBackControl(isPlaying: $viewModel.isPlaying, isFinishedPlaying: $viewModel.isFinishedPlaying) {
@@ -65,8 +63,14 @@ struct HomeView: View {
                     
                     if viewModel.isPlaying {
                         viewModel.player?.pause()
+                        withAnimation {
+                            viewModel.isPlaying = false
+                        }
                     } else {
                         viewModel.player?.play()
+                        withAnimation {
+                            viewModel.isPlaying = true
+                        }
                     }
                 }
                 
@@ -89,6 +93,7 @@ struct HomeView: View {
         }
     }
 
+    // MARK: - Landscape View
     @ViewBuilder
     private func landscapeView(size: CGSize, safeArea: EdgeInsets) -> some View {
         ZStack {
@@ -106,8 +111,10 @@ struct HomeView: View {
                             Text(viewModel.currentSentence)
                                 .font(.title3)
                                 .fontWeight(.regular)
+                                .multilineTextAlignment(.center)
                                 .foregroundColor(.white)
-                                .background(.black.opacity(0.5))
+                                .padding(10)
+                                .background(RoundedRectangle(cornerRadius: 10).fill(.black.opacity(0.5)))
                                 .padding()
                         }
                     }
@@ -119,7 +126,7 @@ struct HomeView: View {
                     TopButton(isCaptionEnabled: $viewModel.isCaptionEnabled, safeArea: safeArea)
                     .padding(.top, 30)
                     
-                    SeekBar(size: size, player: $viewModel.player, progress: $viewModel.progress, lastDraggedProgress: $viewModel.lastDraggedProgress, isSeeking: $viewModel.isSeeking)
+                    SeekBar(player: $viewModel.player, progress: $viewModel.progress, lastDraggedProgress: $viewModel.lastDraggedProgress, isSeeking: $viewModel.isSeeking)
                         .padding()
                     
                     PlayBackControl(isPlaying: $viewModel.isPlaying, isFinishedPlaying: $viewModel.isFinishedPlaying) {
@@ -132,8 +139,14 @@ struct HomeView: View {
                         
                         if viewModel.isPlaying {
                             viewModel.player?.pause()
+                            withAnimation {
+                                viewModel.isPlaying = false
+                            }
                         } else {
                             viewModel.player?.play()
+                            withAnimation {
+                                viewModel.isPlaying = true
+                            }
                         }
                     }
                     

@@ -29,9 +29,6 @@ struct PlayBackControl: View {
             
             
             Button {
-                withAnimation {
-                    isPlaying.toggle()
-                }
                 onPlayClick()
             } label: {
                 ZStack {
@@ -39,7 +36,7 @@ struct PlayBackControl: View {
                         .frame(width: 80)
                         .shadow(radius: 10)
                     
-                    Image(systemName: isFinishedPlaying ? "arrow.clockwise" : (isPlaying ? "arrowtriangle.right.fill" : "pause.fill"))
+                    Image(systemName: isFinishedPlaying ? "arrow.clockwise" : (isPlaying ? "pause.fill" : "arrowtriangle.right.fill"))
                         .scaleEffect(3)
                         .foregroundColor(.black)
                 }

@@ -9,7 +9,6 @@ import SwiftUI
 import AVKit
 
 struct SeekBar: View {
-    let size: CGSize
     @Binding var player: AVPlayer?
     @GestureState var isDragging: Bool = false
     @Binding var progress: CGFloat
@@ -17,54 +16,59 @@ struct SeekBar: View {
     @Binding var isSeeking: Bool
     
     var body: some View {
-        ZStack(alignment: .leading) {
-            Rectangle()
-                .fill(.gray)
+        GeometryReader { geometry in
+            let availableWidth = geometry.size.width
             
-            Rectangle()
-                .fill(.teal.opacity(0.5))
-                .frame(width: max(size.width * progress - 40, 0))
-        }
-        .frame(height: 3)
-        .overlay(alignment: .leading) {
-            Circle()
-                .fill(.teal)
-                .frame(width: 15, height: 15)
-                .contentShape(Rectangle())
-                .offset(x: size.width * progress)
-                .gesture(
-                    DragGesture()
-                        .updating($isDragging, body: { _, out, _ in
-                            out = true
-                        })
-                        .onChanged({ value in
-                            let translationX: CGFloat = value.translation.width
-                            let calculatedProgress = (translationX / size.width) + lastDraggedProgress
-                            
-                            progress = max(min(calculatedProgress, 1), 0)
-                            isSeeking = true
-                        })
-                        .onEnded({ value in
-                            lastDraggedProgress = progress
-                            
-                            if let currentPlayerItem = player?.currentItem {
-                                let totalDuration = currentPlayerItem.duration.seconds
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .fill(.gray)
+                
+                Rectangle()
+                    .fill(.teal.opacity(0.5))
+                    .frame(width: max(availableWidth * progress, 0))
+            }
+            .frame(height: 3)
+            .overlay(alignment: .leading) {
+                Circle()
+                    .fill(.teal)
+                    .frame(width: 15, height: 15)
+                    .contentShape(Rectangle())
+                    .offset(x: availableWidth * progress)
+                    .gesture(
+                        DragGesture()
+                            .updating($isDragging, body: { _, out, _ in
+                                out = true
+                            })
+                            .onChanged({ value in
+                                let translationX: CGFloat = value.location.x - 7.5 // Center the handle
+                                let calculatedProgress = (translationX / availableWidth)
                                 
-                                player?.seek(to: .init(seconds: totalDuration * progress,
+                                progress = max(min(calculatedProgress, 1), 0)
+                                isSeeking = true
+                            })
+                            .onEnded({ value in
+                                lastDraggedProgress = progress
+                                
+                                if let currentPlayerItem = player?.currentItem {
+                                    let totalDuration = currentPlayerItem.duration.seconds
+                                    
+                                    player?.seek(to: .init(seconds: totalDuration * progress,
                                                                  preferredTimescale: 1))
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                    isSeeking = false
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                        isSeeking = false
+                                    }
                                 }
-                            }
-                        })
-                )
-                .offset(x: progress * size.width > 40 ? -40 : 0)
-                .frame(width: 15, height: 15)
+                            })
+                    )
+                    .offset(x: progress * availableWidth > 15 ? -15 : 0)
+                    .frame(width: 15, height: 15)
+            }
         }
+        .frame(height: 15) // Adjust height to fit the SeekBar and the handle
     }
 }
 
 #Preview {
-    SeekBar(size: CGSize(width: 100, height: 100), player: .constant(nil), progress: .constant(0), lastDraggedProgress: .constant(0), isSeeking: .constant(false))
+    SeekBar(player: .constant(nil), progress: .constant(0), lastDraggedProgress: .constant(0), isSeeking: .constant(false))
 }
