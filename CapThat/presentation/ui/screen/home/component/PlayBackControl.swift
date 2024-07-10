@@ -12,57 +12,50 @@ struct PlayBackControl: View {
     let onPlayClick: () -> Void
     
     var body: some View {
-        HStack(spacing: 20) {
+        HStack(spacing: 40) {
             Button {
                 
             } label: {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 25)
-                        .stroke(lineWidth: 2)
-                        .frame(width: 80, height: 60)
-                    
-                    HStack(spacing: -10) {
-                        Image(systemName: "arrowtriangle.left.fill")
-                        Image(systemName: "arrowtriangle.left.fill")
-                    }
-                    .scaleEffect(2)
+                HStack(spacing: -10) {
+                    Image(systemName: "arrowtriangle.left.fill")
+                    Image(systemName: "arrowtriangle.left.fill")
                 }
-                .foregroundColor(.teal)
+                .scaleEffect(2)
+                .shadow(radius: 10)
+                .foregroundColor(.white)
             }
             .disabled(true)
             
             
             Button {
-                isPlaying.toggle()
+                withAnimation {
+                    isPlaying.toggle()
+                }
                 onPlayClick()
             } label: {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 25)
-                        .frame(width: 120, height: 60)
+                    Circle()
+                        .frame(width: 80)
+                        .shadow(radius: 10)
                     
                     Image(systemName: isPlaying ? "arrowtriangle.right.fill" : "pause.fill")
                         .scaleEffect(3)
                         .foregroundColor(.black)
                 }
-                .foregroundColor(.teal)
+                .foregroundColor(.white)
             }
             
             
             Button {
                 
             } label: {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 25)
-                        .stroke(lineWidth: 2)
-                        .frame(width: 80, height: 60)
-                    
-                    HStack(spacing: -10) {
-                        Image(systemName: "arrowtriangle.right.fill")
-                        Image(systemName: "arrowtriangle.right.fill")
-                    }
-                    .scaleEffect(2)
+                HStack(spacing: -10) {
+                    Image(systemName: "arrowtriangle.right.fill")
+                    Image(systemName: "arrowtriangle.right.fill")
                 }
-                .foregroundColor(.teal)
+                .scaleEffect(2)
+                .shadow(radius: 10)
+                .foregroundColor(.white)
             }
             .disabled(true)
         }

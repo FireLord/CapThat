@@ -14,6 +14,7 @@ class HomeViewModel: ObservableObject {
     @Published var player: AVPlayer?
     @Published var sentenceDict: [Double:String] = [:]
     @Published var currentSentence: String = ""
+    @Published var completeParagraph: String = ""
     @Published var isCaptionEnabled: Bool = true
     
     init() {
@@ -36,6 +37,10 @@ class HomeViewModel: ObservableObject {
             .flatMap { $0.paragraphs.paragraphs }
             .flatMap { $0.sentences }
             .forEach { sentenceDict[$0.start] = $0.text }
+        
+        if let data = speechData.results.channels.first?.alternatives.first?.transcript {
+            completeParagraph = data
+        }
     }
     
     func startTimer() {
