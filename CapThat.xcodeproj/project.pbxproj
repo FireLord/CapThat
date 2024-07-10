@@ -19,6 +19,7 @@
 		B20D868B2C3D743400811A20 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = B20D868A2C3D743400811A20 /* response.json */; };
 		B20D868E2C3D75B200811A20 /* SpeechModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D868D2C3D75B200811A20 /* SpeechModel.swift */; };
 		B20D86902C3D774600811A20 /* ResponseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20D868F2C3D774600811A20 /* ResponseUtil.swift */; };
+		B28F49582C3E6D7F007EE807 /* UiUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F49572C3E6D7F007EE807 /* UiUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		B20D868A2C3D743400811A20 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
 		B20D868D2C3D75B200811A20 /* SpeechModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechModel.swift; sourceTree = "<group>"; };
 		B20D868F2C3D774600811A20 /* ResponseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUtil.swift; sourceTree = "<group>"; };
+		B28F49572C3E6D7F007EE807 /* UiUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				B20D86742C3D1E5500811A20 /* screen */,
+				B28F49562C3E6D5A007EE807 /* util */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -179,6 +182,14 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		B28F49562C3E6D5A007EE807 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				B28F49572C3E6D7F007EE807 /* UiUtil.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -252,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B20D868E2C3D75B200811A20 /* SpeechModel.swift in Sources */,
+				B28F49582C3E6D7F007EE807 /* UiUtil.swift in Sources */,
 				B20D86672C3D198D00811A20 /* HomeView.swift in Sources */,
 				B20D86902C3D774600811A20 /* ResponseUtil.swift in Sources */,
 				B20D86652C3D198D00811A20 /* CapThatApp.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Main Model
 struct SpeechModel: Codable {
     let results: Results
 }

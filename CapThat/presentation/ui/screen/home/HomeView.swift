@@ -33,14 +33,20 @@ struct HomeView: View {
                         
                         Spacer()
                         
-                        ZStack {
-                            BlurView(style: .systemThinMaterialDark)
-                                .clipShape(Circle())
-                                .frame(width: 50, height: 50)
-                            
-                            Image(systemName: "captions.bubble.fill")
+                        Button {
+                            viewModel.isCaptionEnabled.toggle()
+                        } label: {
+                            ZStack {
+                                BlurView(style: .systemThinMaterialDark)
+                                    .clipShape(Circle())
+                                    .frame(width: 50, height: 50)
+                                
+                                Image(systemName: viewModel.isCaptionEnabled
+                                      ? "captions.bubble.fill"
+                                      : "captions.bubble")
                                 .scaleEffect(1.2)
                                 .foregroundColor(.white)
+                            }
                         }
                         
                     }
@@ -52,20 +58,34 @@ struct HomeView: View {
                     
                     ZStack {
                         BlurView(style: .systemThinMaterialDark)
-                            .frame(height: size.height / 6)
                             .opacity(0.85)
                         
-                        PlayBackControl(isPlaying: $viewModel.isPlaying) {
-                            if viewModel.isPlaying {
-                                viewModel.player?.pause()
-                            } else {
-                                viewModel.player?.play()
+                        VStack {
+                            if viewModel.isCaptionEnabled {
+                                Text(viewModel.currentSentence)
+                                    .font(.title3)
+                                    .fontWeight(.regular)
+                                    .foregroundColor(.white)
+                                    .padding()
                             }
+                            
+                            Spacer()
+                            
+                            PlayBackControl(isPlaying: $viewModel.isPlaying) {
+                                if viewModel.isPlaying {
+                                    viewModel.player?.pause()
+                                } else {
+                                    viewModel.player?.play()
+                                }
+                            }
+                            .padding(.bottom, safeArea.bottom)
+                            .padding(.horizontal)
                         }
-                        .padding(.bottom, safeArea.bottom)
-                        .padding(.horizontal)
                     }
-                        
+                    .frame(height: viewModel.isCaptionEnabled
+                           ? size.height / 4
+                           : size.height / 7)
+                    
                 }
             }
             .ignoresSafeArea()
