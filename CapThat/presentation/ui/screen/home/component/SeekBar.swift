@@ -55,9 +55,10 @@ struct SeekBar: View {
                                     player?.seek(to: .init(seconds: totalDuration * progress,
                                                                  preferredTimescale: 1))
                                     
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                        isSeeking = false
-                                    }
+//                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+//                                        isSeeking = false
+//                                    }
+                                    isSeeking = false
                                 }
                             })
                     )

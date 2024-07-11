@@ -41,16 +41,45 @@ class HomeViewModel: ObservableObject {
             return
         }
         
+        var currentSentence = ""
+        var currentStartTime: Double = 0
+        var currentDuration: Double = 0
+        let minimumDuration: Double = 1.5
+        
         speechData.results.channels
             .flatMap { $0.alternatives }
-            .flatMap { $0.paragraphs.paragraphs }
-            .flatMap { $0.sentences }
-            .forEach { sentenceDict[$0.start] = $0.text }
+            .flatMap { $0.words }
+            .forEach { word in
+                let wordDuration = word.end - word.start
+                
+                // This helps in keeping the startTime to be correct for next sentence
+                if currentSentence.isEmpty {
+                    currentStartTime = word.start
+                }
+                
+                // Keep building sentence until 1.5 or close to it is reached
+                // Using punctuatedWord for better readability
+                currentSentence += (currentSentence.isEmpty ? "" : " ") + word.punctuatedWord
+                currentDuration += wordDuration
+                
+                // Add the sentence to dict after its complete
+                if currentDuration >= minimumDuration {
+                    sentenceDict[currentStartTime] = currentSentence
+                    currentSentence = ""
+                    currentDuration = 0
+                }
+            }
+        
+        // Add remaining words
+        if !currentSentence.isEmpty {
+            sentenceDict[currentStartTime] = currentSentence
+        }
         
         if let data = speechData.results.channels.first?.alternatives.first?.transcript {
             completeParagraph = data
         }
     }
+
     
     func startTimer() {
         player?.addPeriodicTimeObserver(forInterval: .milliseconds(100), queue: .main) { [weak self] time in
